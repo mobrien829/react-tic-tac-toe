@@ -1,7 +1,7 @@
 import React from "react";
 import Board from "./Board";
-import { TurnContextProvider } from "./TurnContext";
-import TurnDisplay from "./turn-display";
+import { TurnContextProvider } from "./contexts/turn-context/TurnContext";
+import TurnView from "./contexts/turn-context/turn-view";
 import "./App.css";
 
 function App() {
@@ -11,8 +11,7 @@ function App() {
     <>
       <TurnContextProvider>
         <Board />
-        <h3 className="game-info">Turn:</h3>
-        <TurnDisplay />
+        <TurnView />
       </TurnContextProvider>
     </>
   );
