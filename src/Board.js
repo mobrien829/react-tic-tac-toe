@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
 import GameBox from "./GameBox";
 import { TurnContext } from "./contexts/turn-context/TurnContext";
-import { findWinner } from "./winner-logic";
-import { boardFilled } from "./game-logic";
+import { findWinner } from "./utils/winner-logic";
+import { boardFilled } from "./utils/game-logic";
+import RestartButton from "./reset-game";
 
 function Board() {
   const [boxes, setBoxes] = useState(Array(9).fill(null));
@@ -11,6 +12,9 @@ function Board() {
   const winner = findWinner(boxes);
 
   const clickHandler = (i) => {
+    if (boxes[i] != null || winner != null) {
+      return;
+    }
     const nextBoxes = boxes.slice();
     nextBoxes[i] = turn;
     setBoxes(nextBoxes);
@@ -28,6 +32,10 @@ function Board() {
     } else {
       return `Next turn: ${turn}`;
     }
+  };
+  const resetHelper = () => {
+    setBoxes(Array(9).fill(null));
+    setTurn("X");
   };
 
   return (
@@ -50,6 +58,9 @@ function Board() {
         </div>
       </div>
       <div className="game-info">{winnerInfo()}</div>
+      <div className="restart-button">
+        <RestartButton onClick={resetHelper} />
+      </div>
     </>
   );
 }
