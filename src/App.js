@@ -1,12 +1,21 @@
 import React from "react";
-import logo from "./logo.svg";
-import GameBox from "./GameBox";
 import Board from "./Board";
+import { TurnContextProvider } from "./TurnContext";
+import TurnDisplay from "./turn-display";
 import "./App.css";
 
 function App() {
   // return <GameBox></GameBox>;
-  return <Board />;
+
+  return (
+    <>
+      <TurnContextProvider>
+        <Board />
+        <h3 className="game-info">Turn:</h3>
+        <TurnDisplay />
+      </TurnContextProvider>
+    </>
+  );
 }
 
 export default App;

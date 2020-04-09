@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TurnContext } from "./TurnContext";
 
 function GameBox({ value, onClick }) {
-  console.log("gamebox render");
+  const [turn, setTurn] = useContext(TurnContext);
+  const useButton = () => {
+    console.log(turn);
+    turn === "X" ? setTurn("O") : setTurn("X");
+  };
   return (
-    <button className="square" onClick={onClick}>
+    <button className="square" onClick={useButton}>
       {value}
     </button>
   );
