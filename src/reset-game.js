@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
+import "./css/Board.css";
 
 function ResetButton({ onClick }) {
   return (

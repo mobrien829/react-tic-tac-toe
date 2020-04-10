@@ -1,0 +1,19 @@
+.square { 
+    background: #c9f0f5;
+    color: black;
+    border: 4px solid #86d8e3;
+    float: left;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 60px;
+    height: 60px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 60px;
+}
+
+.square:focus {
+    outline: none;
+}

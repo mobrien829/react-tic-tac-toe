@@ -4,6 +4,7 @@ import { TurnContext } from "./contexts/turn-context/TurnContext";
 import { findWinner } from "./utils/winner-logic";
 import { boardFilled } from "./utils/game-logic";
 import RestartButton from "./reset-game";
+import "./css/Board.css";
 
 function Board() {
   const [boxes, setBoxes] = useState(Array(9).fill(null));
@@ -39,29 +40,31 @@ function Board() {
   };
 
   return (
-    <>
-      <div className="game-board">
-        <div className="board-row">
-          {renderBox(0)}
-          {renderBox(1)}
-          {renderBox(2)}
+    <div className="container">
+      <div className="game">
+        <div className="game-board">
+          <div className="board-row">
+            {renderBox(0)}
+            {renderBox(1)}
+            {renderBox(2)}
+          </div>
+          <div className="board-row">
+            {renderBox(3)}
+            {renderBox(4)}
+            {renderBox(5)}
+          </div>
+          <div className="board-row">
+            {renderBox(6)}
+            {renderBox(7)}
+            {renderBox(8)}
+          </div>
         </div>
-        <div className="board-row">
-          {renderBox(3)}
-          {renderBox(4)}
-          {renderBox(5)}
-        </div>
-        <div className="board-row">
-          {renderBox(6)}
-          {renderBox(7)}
-          {renderBox(8)}
+        <div className="game-info">{winnerInfo()}</div>
+        <div className="restart-button">
+          <RestartButton onClick={resetHelper} />
         </div>
       </div>
-      <div className="game-info">{winnerInfo()}</div>
-      <div className="restart-button">
-        <RestartButton onClick={resetHelper} />
-      </div>
-    </>
+    </div>
   );
 }
 
